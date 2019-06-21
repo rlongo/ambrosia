@@ -1,0 +1,30 @@
+version: '3.3'
+services:
+  db:
+      image: mongo:latest
+      deploy:
+        restart_policy:
+          condition: on-failure
+  server:
+      build:
+        context: server
+        dockerfile: Dockerfile
+      ports:
+        - '8000:8000'
+      environment:
+        - PORT=8000
+        - DB_URL=mongodb://db:27017
+      deploy:
+        restart_policy:
+          condition: on-failure
+  client:
+      build:
+        context: client 
+        dockerfile: Dockerfile
+      ports:
+        - '3000:80'
+      environment:
+        - VUE_APP_AMBROSIA_SERVER="http://server:8000"
+      deploy:
+        restart_policy:
+          condition: on-failure
