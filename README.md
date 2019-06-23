@@ -15,8 +15,8 @@ docker stack deploy -c docker-compose.yml ambrosia
 
 ### Build for Local Testing
 ```bash
-docker-compose -f docker-compose.dev.yml build --parallel
-docker-compose -f docker-compose.dev.yml up
+docker-compose build --parallel
+docker-compose up
 ```
 
 ### Open Firewall Ports
