@@ -6,11 +6,25 @@ Ambrosia is a digital recipe book. A bit of a pet project since I needed to digi
 
 Docker all the way!
 
-Once that is up and running, access it on [port 3000](http://localhost:3000).
+Once that is up and running, access it on [port 3000](http://127.0.0.1:3000).
 
-### Platform x86-amd64
-
+### Build for Production
 ```bash
-docker-compose build --parallel
 docker stack deploy -c docker-compose.yml ambrosia
+```
+
+### Build for Local Testing
+```bash
+docker-compose -f docker-compose.dev.yml build --parallel
+docker-compose -f docker-compose.dev.yml up
+```
+
+### Open Firewall Ports
+Assumes that you use firewalld
+```bash
+cp firewall-rules.xml /etc/firewalld/services/ambrosia.xml
+
+firewall-cmd --reload
+firewall-cmd --zone=public --add-service=ambrosia --permanent
+firewall-cmd --reload
 ```
