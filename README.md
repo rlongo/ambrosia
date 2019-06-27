@@ -1,22 +1,24 @@
 # Ambrosia
 
-Ambrosia is a digital recipe book. A bit of a pet project since I needed to digitize my own recipe collection, and couldn't find a platform I was satisfied with that could do it.
+Ambrosia is a digital recipe book. A bit of a pet project since I needed to digitize my own recipe collection, and couldn't find a platform I was satisfied with.
 
 ## Build, Run, Deploy
 
 Docker all the way!
 
-Once that is up and running, access it on [port 3000](http://127.0.0.1:3000).
+Stack is:
+* **Client** is a vue.js app that runs on a nginx server bound to port 3000. It passes requests to `/api` that get proxied off to the server.
+* **Server** is a go app that wraps up the database.
 
-### Build for Production
+### Production
 ```bash
 docker stack deploy -c docker-compose.yml ambrosia
 ```
 
-### Build for Local Testing
+### Local Testing
 ```bash
-docker-compose build --parallel
-docker-compose up
+docker-compose -f docker-compose.dev.yml build --parallel
+docker-compose -f docker-compose.dev.yml up
 ```
 
 ### Open Firewall Ports
