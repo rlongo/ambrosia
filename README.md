@@ -10,15 +10,10 @@ Stack is:
 * **Client** is a vue.js app that runs on a nginx server bound to port 3000. It passes requests to `/api` that get proxied off to the server.
 * **Server** is a go app that wraps up the database.
 
-### Production
+### Build and Run
 ```bash
+docker-compose build --parallel
 docker stack deploy -c docker-compose.yml ambrosia
-```
-
-### Local Testing
-```bash
-docker-compose -f docker-compose.dev.yml build --parallel
-docker-compose -f docker-compose.dev.yml up
 ```
 
 ### Open Firewall Ports

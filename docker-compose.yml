@@ -6,7 +6,7 @@ services:
       restart_policy:
         condition: on-failure
   server:
-    image: codezilla/ambrosia-server-go:latest
+    image: ambrosia-server-go:latest
     build:
       context: server
       dockerfile: Dockerfile
@@ -21,7 +21,7 @@ services:
       restart_policy:
         condition: on-failure
   client:
-    image: codezilla/ambrosia-client:latest
+    image: ambrosia-client:latest
     build:
       context: client
       dockerfile: Dockerfile
