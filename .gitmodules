@@ -3,4 +3,4 @@
 	url = http://github.com/rlongo/ambrosia-client
 [submodule "server"]
 	path = server
-	url = http://github.com/rlongo/ambrosia-server-go
+	url = git@github.com:rlongo/ambrosia-server-py
